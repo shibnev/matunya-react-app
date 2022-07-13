@@ -1,0 +1,23 @@
+.inner {
+  @apply container mx-auto p-10;
+}
+
+.wrapBtn {
+  @apply flex gap-2 mb-2;
+}
+
+.btnApply {
+  @apply rounded-none bg-purple-500 text-white text-lg font-bold;
+
+  &:hover {
+    @apply bg-white text-purple-500;
+  }
+}
+
+.btnCancel {
+  @apply rounded-none text-purple-500 text-lg font-bold;
+
+  &:hover {
+    @apply text-white bg-purple-500;
+  }
+}
