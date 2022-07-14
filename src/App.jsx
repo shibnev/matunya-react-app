@@ -1,7 +1,6 @@
-// import { useState } from 'react';
-import { Btn } from './Btn';
+import { Btn } from './components/Btn';
 import useFetch from './hooks/useFetch';
-import { Table } from './Table';
+import { Table } from './components/Table';
 
 const FETCH_URL = 'https://animechan.vercel.app/api/quotes';
 

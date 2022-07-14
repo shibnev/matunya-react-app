@@ -8,6 +8,7 @@ const useFetch = (url) => {
 
   const getData = () => {
     setIsLoading(true);
+    setError(null);
 
     fetch(url, {
       method: 'get',
@@ -22,10 +23,10 @@ const useFetch = (url) => {
       .then((data) => {
         setIsLoading(false);
         setData(data);
-        setError(null);
       })
       .catch((err) => {
         setIsLoading(false);
+        setData(false);
         setError(err.message);
       });
   };
