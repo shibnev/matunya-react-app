@@ -1,36 +1,12 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Btn } from './Btn';
+import useFetch from './hooks/useFetch';
 import { Table } from './Table';
 
 const FETCH_URL = 'https://animechan.vercel.app/api/quotes';
 
 const App = () => {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const fetchData = () => {
-    setIsLoading(true);
-
-    fetch(FETCH_URL)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error(`could not fetch the data from ${FETCH_URL}`);
-        }
-        return response.json();
-      })
-      .then((quotes) => {
-        setData(quotes);
-        setIsLoading(false);
-        setError(null);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setError(error.message);
-      });
-  };
-
-  const cancelData = () => setData(false);
+  const { error, isLoading, data, getData, cancelData } = useFetch(FETCH_URL);
 
   return (
     <div className='app'>
@@ -38,7 +14,7 @@ const App = () => {
         <div className='flex gap-2 mb-2'>
           <Btn
             className='rounded-none bg-purple-500 text-white text-lg font-bold hover:bg-white hover:text-purple-500'
-            onClick={fetchData}
+            onClick={getData}
           >
             DOWNLOAD
           </Btn>
