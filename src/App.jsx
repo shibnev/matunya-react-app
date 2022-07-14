@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Btn } from '../Btn/Btn';
-import { Table } from '../Table/Table';
-import styles from './App.module.scss';
+import { Btn } from './Btn';
+import { Table } from './Table';
 
 const FETCH_URL = 'https://animechan.vercel.app/api/quotes';
 
@@ -24,12 +23,18 @@ const App = () => {
 
   return (
     <div className='app'>
-      <div className={styles.inner}>
-        <div className={styles.wrapBtn}>
-          <Btn className={styles.btnApply} onClick={fetchData}>
+      <div className='container mx-auto p-10'>
+        <div className='flex gap-2 mb-2'>
+          <Btn
+            className='rounded-none bg-purple-500 text-white text-lg font-bold hover:bg-white hover:text-purple-500'
+            onClick={fetchData}
+          >
             DOWNLOAD
           </Btn>
-          <Btn className={styles.btnCancel} onClick={cancelData}>
+          <Btn
+            className='rounded-none text-purple-500 text-lg font-bold hover:text-white hover:bg-purple-500'
+            onClick={cancelData}
+          >
             CANCEL
           </Btn>
         </div>
