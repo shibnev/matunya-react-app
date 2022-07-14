@@ -7,15 +7,26 @@ const FETCH_URL = 'https://animechan.vercel.app/api/quotes';
 const App = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchData = () => {
     setIsLoading(true);
 
     fetch(FETCH_URL)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(`could not fetch the data from ${FETCH_URL}`);
+        }
+        return response.json();
+      })
       .then((quotes) => {
         setData(quotes);
         setIsLoading(false);
+        setError(null);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setError(error.message);
       });
   };
 
@@ -39,6 +50,7 @@ const App = () => {
           </Btn>
         </div>
 
+        {error && <h2 className='text-red-600'>{error}</h2>}
         {isLoading && <p>Loading ...</p>}
         {data && <Table data={data} />}
       </div>
