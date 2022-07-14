@@ -11,7 +11,6 @@ const useFetch = (url) => {
     setError(null);
 
     fetch(url, {
-      method: 'get',
       signal: abortController.signal,
     })
       .then((res) => {
