@@ -12,13 +12,13 @@ const App = () => {
       <div className='container mx-auto p-10'>
         <div className='flex gap-2 mb-2'>
           <Btn
-            className='rounded-none bg-purple-500 text-white text-lg font-bold hover:bg-white hover:text-purple-500'
+            className='bg-purple-500 text-white hover:bg-white hover:text-purple-500'
             onClick={getData}
           >
             DOWNLOAD
           </Btn>
           <Btn
-            className='rounded-none text-purple-500 text-lg font-bold hover:text-white hover:bg-purple-500'
+            className='text-purple-500 hover:text-white hover:bg-purple-500'
             onClick={cancelData}
           >
             CANCEL
